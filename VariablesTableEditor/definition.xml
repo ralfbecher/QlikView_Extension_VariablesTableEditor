@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ExtensionObject Path="VariablesTableEditor" 
+                 Label="Variables Table Editor" 
+				 Description="Edit Variables in a Table" 
+				 PageWidth="0"
+				 PageHeight="0"
+				 Type="Object" >
+	<Text Label="Page Size" Type="select" Select="3,5,7,8,10,12,15,20,25,30,50" SelectLabel="3,5,7,8,10,12,15,20,25,30,50" Expression="10" />
+    <Text Label="Show System Variables" Type="checkbox" Expression="0" />
+	<Initiate Name="Caption.Text" value="Variables Overview" />
+</ExtensionObject>

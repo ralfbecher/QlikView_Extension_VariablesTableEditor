@@ -1,0 +1,19 @@
+.jqdt-variable{ 
+  text-align: left 
+}
+.jqdt-value{ 
+  text-align: left 
+}
+.dataTable td {
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre;
+  font-size:12px;
+}
+
+.dataTable textarea {
+  overflow: auto;
+  white-space: pre;
+  font-size:12px;
+}
