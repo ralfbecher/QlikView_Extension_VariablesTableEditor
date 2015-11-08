@@ -1,8 +1,10 @@
-// This checks if the console is present, and if not it 
-// sets it to an object with a blank function called log to
-// prevent any error. Remove logging for production.
-if(!window.console){ window.console = {log: function(){} }; } 
+/*
+Created by Ralf Becher - ralf.becher@web.de - (c) 2015 irregular.bi, Leipzig, Germany
+Tested on QlikView 11.2
 
+irregular.bi takes no responsibility for any code.
+Use at your own risk. 
+*/
 (function ($) {
 	var _extension = 'VariablesTableEditor';
     var _path = 'Extensions/' + _extension + '/';
