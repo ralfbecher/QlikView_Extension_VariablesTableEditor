@@ -122,3 +122,43 @@ $.fn.inlineEdit = function(replaceWith, connectWith, index, mode) {
 		Qv.GetCurrentDocument().SetVariable(varName, varValue);
 	});
 };
+
+// helper code needed for html select element in config dialog
+// remove if no select element needed
+if (Qva.Mgr.mySelect == undefined) {
+    Qva.Mgr.mySelect = function(owner, elem, name, prefix) {
+        if (!Qva.MgrSplit(this, name, prefix)) return;
+        owner.AddManager(this);
+        this.Element = elem;
+        this.ByValue = true;
+
+        elem.binderid = owner.binderid;
+        elem.Name = this.Name;
+
+        elem.onchange = Qva.Mgr.mySelect.OnChange;
+        elem.onclick = Qva.CancelBubble;
+   }
+   Qva.Mgr.mySelect.OnChange = function() {
+    var binder = Qva.GetBinder(this.binderid);
+    if (!binder.Enabled) return;
+    if (this.selectedIndex < 0) return;
+    var opt = this.options [this.selectedIndex];
+    binder.Set (this.Name, 'text', opt.value, true);    
+    }
+    Qva.Mgr.mySelect.prototype.Paint = function(mode, node) {
+        this.Touched = true;
+        var element = this.Element;
+        var currentValue = node.getAttribute("value");
+        if (currentValue == null) currentValue = "";
+        var optlen = element.options.length;
+        element.disabled = mode != 'e';
+        //element.value = currentValue;
+        for (var ix = 0; ix < optlen; ++ix) {
+             if(element.options[ix].value === currentValue){
+                element.selectedIndex = ix;
+             }
+        }    
+        element.style.display = Qva.MgrGetDisplayFromMode(this, mode);
+        
+   }
+}
